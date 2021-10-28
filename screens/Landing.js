@@ -24,6 +24,7 @@ const Landing = ({ navigation }) => {
                         viewDetails={() =>
                             navigation.navigate("Details", {
                                 courseId: item.id,
+                                title: item.title,
                             })
                         }
                         addToCard={() => alert("panier")}

@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const ProductInfos = ({ route }) => {
+// Redux
+import { useSelector } from "react-redux";
+
+const ProductInfos = ({ navigation, route }) => {
     const courseId = route.params.courseId;
-    console.log(courseId);
+    // const selectedCourse = useSelector(state =>
+    //     state.products.existingProducts.find(course => course.id === courseId),
+    // );
+
+    // useEffect(() => {
+    //     navigation.setOptions({
+    //         title: selectedCourse.title,
+    //     });
+    // }, [navigation]);
+
     return (
         <View>
             <Text>Product infos</Text>
