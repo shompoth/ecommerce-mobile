@@ -1,4 +1,4 @@
-import { PRODUCTS } from "../../data/testData";
+import PRODUCTS from "../../data/testData";
 
 const initialState = {
     existingProducts: PRODUCTS,
