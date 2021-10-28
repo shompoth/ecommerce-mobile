@@ -7,12 +7,16 @@ import Landing from "../screens/Landing";
 import ProductInfos from "../screens/ProductInfos";
 import Cart from "../screens/Cart";
 
+// Header buttons
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomHeaderIcon from "../components/CustomHeaderIcon/CustomHeaderIcon";
+
 const ProductsStackNavigator = createStackNavigator();
 
 export const ProductsNavigator = () => {
     return (
         <ProductsStackNavigator.Navigator
-            screenOptions={{
+            screenOptions={({ navigation }) => ({
                 headerStyle: {
                     backgroundColor: globalStyles.green,
                 },
@@ -20,7 +24,16 @@ export const ProductsNavigator = () => {
                     fontWeight: "bold",
                 },
                 headerTintColor: globalStyles.white,
-            }}
+                headerRight: () => (
+                    <HeaderButtons HeaderButtonComponent={CustomHeaderIcon}>
+                        <Item
+                            title="panier"
+                            iconName="shopping-cart"
+                            onPress={() => navigation.navigate("Cart")}
+                        />
+                    </HeaderButtons>
+                ),
+            })}
         >
             <ProductsStackNavigator.Screen name="Landing" component={Landing} />
             <ProductsStackNavigator.Screen
