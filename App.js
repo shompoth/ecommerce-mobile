@@ -3,7 +3,7 @@ import React from "react";
 import { Provider } from "react-redux";
 
 // Composants
-import Landing from "./screens/Landing";
+import AppNav from "./routes/AppNav";
 
 // Redux
 import store from "./redux/store";
@@ -11,7 +11,7 @@ import store from "./redux/store";
 export default function App() {
     return (
         <Provider store={store}>
-            <Landing />
+            <AppNav />
         </Provider>
     );
 }

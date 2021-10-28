@@ -8,7 +8,7 @@ import EmptyMsg from "../components/EmptyMsg/EmptyMsg";
 // Redux
 import { useSelector } from "react-redux";
 
-const Landing = () => {
+const Landing = ({ navigation }) => {
     // Redux
     const existingProducts = useSelector(state => state.products.existingProducts);
 
@@ -21,7 +21,11 @@ const Landing = () => {
                         image={item.image}
                         price={item.price}
                         title={item.title}
-                        viewDetails={() => alert("details")}
+                        viewDetails={() =>
+                            navigation.navigate("Details", {
+                                courseId: item.id,
+                            })
+                        }
                         addToCard={() => alert("panier")}
                     />
                 )}
