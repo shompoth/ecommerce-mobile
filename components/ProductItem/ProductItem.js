@@ -12,28 +12,30 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 const ProductItem = ({ image, price, title, viewDetails, addToCard }) => {
     return (
-        <TouchableHighlight onPress={viewDetails} underlayColor={globalStyles.green}>
+        <TouchableHighlight onPress={viewDetails} underlayColor={globalStyles.primary}>
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
                     <Image source={{ uri: image }} style={styles.image} />
                 </View>
                 <View style={styles.productContainerDetails}>
                     <Text style={styles.productTitle}>{title}</Text>
-                    <Text style={styles.productPrice}>{price}</Text>
+                    <Text style={styles.productPrice}>{price} €</Text>
                 </View>
                 <View style={styles.iconsContainer}>
-                    <TouchableOpacity>
-                        <MaterialIcons
-                            name="remove-red-eye"
-                            size={26}
-                            color={globalStyles.green}
-                        />
-                    </TouchableOpacity>
+                    {/* <TouchableOpacity> */}
+                    <MaterialIcons
+                        name="remove-red-eye"
+                        size={26}
+                        // color={globalStyles.primary}
+                        color={globalStyles.darkGrey}
+                    />
+                    {/* </TouchableOpacity> */}
                     <TouchableOpacity onPress={addToCard}>
                         <MaterialIcons
                             name="shopping-basket"
                             size={26}
-                            color={globalStyles.green}
+                            // color={globalStyles.primary}
+                            color={globalStyles.darkGrey}
                         />
                     </TouchableOpacity>
                 </View>
@@ -70,9 +72,10 @@ const styles = StyleSheet.create({
     productTitle: {
         fontSize: 16,
         marginVertical: 4,
-        color: globalStyles.green,
+        color: globalStyles.primary,
         fontWeight: "bold",
         textTransform: "uppercase",
+        textAlign: "center",
     },
     productPrice: {
         color: globalStyles.darkGrey,

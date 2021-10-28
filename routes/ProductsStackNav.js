@@ -18,7 +18,7 @@ export const ProductsNavigator = () => {
         <ProductsStackNavigator.Navigator
             screenOptions={({ navigation }) => ({
                 headerStyle: {
-                    backgroundColor: globalStyles.green,
+                    backgroundColor: globalStyles.primary,
                 },
                 headerTitleStyle: {
                     fontWeight: "bold",
@@ -35,7 +35,7 @@ export const ProductsNavigator = () => {
                 ),
             })}
         >
-            <ProductsStackNavigator.Screen name="Landing" component={Landing} />
+            <ProductsStackNavigator.Screen name="Accueil" component={Landing} />
             <ProductsStackNavigator.Screen
                 name="Details"
                 component={ProductInfos}
