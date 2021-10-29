@@ -13,6 +13,14 @@ const Landing = ({ navigation }) => {
     // Redux
     const dispatch = useDispatch();
     const existingProducts = useSelector(state => state.products.existingProducts);
+    const ebookToDisplay = existingProducts.filter(
+        course => course.type === "Ebook" && course.selected === false,
+    );
+    const existingProductsWithoutEbook = existingProducts.filter(
+        course => course.type !== "Ebook",
+    );
+
+    const productsToDisplay = existingProductsWithoutEbook.concat(ebookToDisplay);
 
     // Fonction
     const handleAddToCart = product => {
@@ -20,10 +28,10 @@ const Landing = ({ navigation }) => {
         alert("Produit ajouté au panier");
     };
 
-    if (existingProducts.length) {
+    if (productsToDisplay.length) {
         return (
             <FlatList
-                data={existingProducts}
+                data={productsToDisplay}
                 renderItem={({ item }) => (
                     <ProductItem
                         image={item.image}
