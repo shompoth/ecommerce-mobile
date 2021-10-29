@@ -4,4 +4,5 @@ export default {
     dimGray: "dimgray",
     lightGrey: "#ccc",
     darkGrey: "#333",
+    lightOrange: "moccasin",
 };

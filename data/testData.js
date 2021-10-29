@@ -4,8 +4,7 @@ const PRODUCTS = [
         title: "Coaching sportif",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
-        // image: "https://cdn.pixabay.com/photo/2020/04/29/13/05/graphics-5108828_960_720.png",
-        image: require("../assets/coaching.jpg"),
+        image: require("../assets/coaching2.jpg"),
         price: 60,
         selected: false,
         instructorId: "1",
@@ -15,7 +14,6 @@ const PRODUCTS = [
         title: "Visio - Coaching sportif",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
-        // image: "https://cdn.pixabay.com/photo/2021/02/15/20/38/software-6019023_960_720.png",
         image: require("../assets/visioCoaching.jpg"),
         price: 50,
         selected: false,
@@ -73,7 +71,7 @@ const PRODUCTS = [
     },
     {
         id: "8",
-        title: "Entrainement - Pack Elastique de résistance",
+        title: "Accessoire - Pack Elastique de résistance",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
         image: require("../assets/elasticBand.jpg"),
@@ -83,7 +81,7 @@ const PRODUCTS = [
     },
     {
         id: "9",
-        title: "Entrainement - TRX",
+        title: "Accessoire - TRX",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
         image: require("../assets/trx.jpg"),
