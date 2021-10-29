@@ -8,19 +8,29 @@ import {
     TouchableOpacity,
 } from "react-native";
 import globalStyles from "../styles/globalStyles";
+import { addToCart } from "../redux/actions/actionAddToCart";
 
 // Icon
 import { MaterialIcons } from "@expo/vector-icons";
 
 // Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const ProductInfos = ({ navigation, route }) => {
     const courseId = route.params.courseId;
+
+    // Redux
     const selectedCourse = useSelector(state =>
         state.products.existingProducts.find(course => course.id === courseId),
     );
-    // const imgUrl = `../assets/${selectedCourse.image}`;
+    const dispatch = useDispatch();
+
+    // Fonction
+    const handleAddToCart = () => {
+        dispatch(addToCart(selectedCourse));
+        navigation.goBack();
+        alert("Produit ajouté au panier");
+    };
 
     return (
         <View>
@@ -56,7 +66,7 @@ const ProductInfos = ({ navigation, route }) => {
                         color={globalStyles.white}
                         onPress={() => navigation.goBack()}
                     />
-                    <TouchableOpacity onPress={() => alert("Ajouté au panier")}>
+                    <TouchableOpacity onPress={handleAddToCart}>
                         <View style={styles.btnAddToCart}>
                             <Text style={styles.btnText}>Ajouter au panier</Text>
                         </View>
