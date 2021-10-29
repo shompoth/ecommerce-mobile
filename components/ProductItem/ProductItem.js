@@ -11,11 +11,13 @@ import globalStyles from "../../styles/globalStyles";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const ProductItem = ({ image, price, title, viewDetails, addToCard }) => {
+    const imgUrl = "../../assets/" + image;
+
     return (
         <TouchableHighlight onPress={viewDetails} underlayColor={globalStyles.primary}>
             <View style={styles.container}>
                 <View style={styles.imageContainer}>
-                    <Image source={{ uri: image }} style={styles.image} />
+                    <Image source={image} style={styles.image} />
                 </View>
                 <View style={styles.productContainerDetails}>
                     <Text style={styles.productTitle}>{title}</Text>
