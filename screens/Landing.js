@@ -13,14 +13,12 @@ const Landing = ({ navigation }) => {
     // Redux
     const dispatch = useDispatch();
     const existingProducts = useSelector(state => state.products.existingProducts);
-    const ebookToDisplay = existingProducts.filter(
-        course => course.type === "Ebook" && course.selected === false,
-    );
-    const existingProductsWithoutEbook = existingProducts.filter(
-        course => course.type !== "Ebook",
-    );
 
-    const productsToDisplay = existingProductsWithoutEbook.concat(ebookToDisplay);
+    const productsToDisplay = existingProducts.filter(
+        course =>
+            course.type !== "Ebook" ||
+            (course.type === "Ebook" && course.selected === false),
+    );
 
     // Fonction
     const handleAddToCart = product => {
@@ -37,6 +35,7 @@ const Landing = ({ navigation }) => {
                         image={item.image}
                         price={item.price}
                         title={item.title}
+                        type={item.type}
                         viewDetails={() =>
                             navigation.navigate("Details", {
                                 courseId: item.id,

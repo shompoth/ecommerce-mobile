@@ -23,7 +23,7 @@ const PRODUCTS = [
     },
     {
         id: "3",
-        title: "Bien être - Pistolet de massage",
+        title: "Pistolet de massage",
         type: "Bien-être",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -34,7 +34,7 @@ const PRODUCTS = [
     },
     {
         id: "4",
-        title: "Nutrition - Protéine Whey (1kg)",
+        title: "Protéine Whey (1kg)",
         type: "Nutrition",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -45,7 +45,7 @@ const PRODUCTS = [
     },
     {
         id: "5",
-        title: "Ebook - Comment prendre du muscle [Débutant]",
+        title: "Comment prendre du muscle [Débutant]",
         type: "Ebook",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -56,7 +56,7 @@ const PRODUCTS = [
     },
     {
         id: "6",
-        title: "Ebook - Comment perdre du poids [Débutant]",
+        title: "Comment perdre du poids [Débutant]",
         type: "Ebook",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -67,7 +67,7 @@ const PRODUCTS = [
     },
     {
         id: "7",
-        title: "Ebook - Comprendre son métabolisme [Débutant]",
+        title: "Comprendre son métabolisme [Débutant]",
         type: "Ebook",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -78,7 +78,7 @@ const PRODUCTS = [
     },
     {
         id: "8",
-        title: "Accessoire - Pack Elastique de résistance",
+        title: "Pack Elastique de résistance",
         type: "Accessoire",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -89,7 +89,7 @@ const PRODUCTS = [
     },
     {
         id: "9",
-        title: "Accessoire - TRX",
+        title: "TRX",
         type: "Accessoire",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
