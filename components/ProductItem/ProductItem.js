@@ -3,7 +3,6 @@ import {
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableOpacity,
     TouchableHighlight,
     ImageBackground,
@@ -36,7 +35,6 @@ const ProductItem = ({ image, price, title, type, viewDetails, addToCard }) => {
                         size={26}
                         color={globalStyles.darkGrey}
                     />
-
                     <TouchableOpacity onPress={addToCard}>
                         <MaterialIcons
                             name="shopping-basket"
@@ -64,13 +62,10 @@ const styles = StyleSheet.create({
         height: "60%",
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        // overflow: "hidden",
-        // backgroundColor: "rgba(0,0,0,.6)",
     },
     image: {
         height: "100%",
         width: "100%",
-        // backgroundColor: "rgba(0, 0, 0, 0.8)",
     },
     productContainerDetails: {
         alignItems: "center",
@@ -113,7 +108,7 @@ const styles = StyleSheet.create({
     productBadge: {
         color: globalStyles.white,
         fontWeight: "bold",
-        fontSize: 14,
+        fontSize: 12,
         // padding: 10,
         // margin: 10,
 

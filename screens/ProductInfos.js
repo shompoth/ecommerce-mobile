@@ -36,6 +36,9 @@ const ProductInfos = ({ navigation, route }) => {
         <View>
             <ScrollView style={styles.scroll}>
                 <Image source={selectedCourse.image} style={styles.courseImage} />
+                <View style={styles.typeContainer}>
+                    <Text style={styles.typeText}>{selectedCourse.type}</Text>
+                </View>
                 <View style={styles.courseDetails}>
                     <Text style={styles.courseDescription}>
                         {selectedCourse.description}
@@ -86,8 +89,22 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 250,
     },
+    typeContainer: {
+        backgroundColor: globalStyles.primary,
+        alignItems: "flex-end",
+        justifyContent: "center",
+        marginTop: 10,
+        marginHorizontal: 20,
+        padding: 10,
+        alignSelf: "flex-end",
+        borderRadius: 10,
+    },
+    typeText: {
+        color: globalStyles.white,
+        fontSize: 12,
+    },
     courseDetails: {
-        padding: 20,
+        padding: 10,
         alignItems: "center",
     },
     courseDescription: {
@@ -121,8 +138,8 @@ const styles = StyleSheet.create({
     },
     btnAddToCart: {
         borderRadius: 6,
-        paddingVertical: 9,
-        paddingHorizontal: 25,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
         backgroundColor: globalStyles.lightOrange,
     },
     btnText: {

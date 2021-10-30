@@ -1,7 +1,7 @@
 const PRODUCTS = [
     {
         id: "1",
-        title: "Coaching sportif",
+        title: "Coaching Sportif",
         type: "Entrainement",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -12,7 +12,18 @@ const PRODUCTS = [
     },
     {
         id: "2",
-        title: "Visio - Coaching sportif",
+        title: "10 Coachings Sportifs - [Pack]",
+        type: "Entrainement",
+        description:
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
+        image: require("../assets/coaching2.jpg"),
+        price: 500,
+        selected: false,
+        instructorId: "1",
+    },
+    {
+        id: "3",
+        title: "Coaching Sportif - [Visio]",
         type: "Entrainement",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -22,7 +33,18 @@ const PRODUCTS = [
         instructorId: "1",
     },
     {
-        id: "3",
+        id: "4",
+        title: "Coaching Sportif/Nutritionel - [En Ligne]",
+        type: "Suivi",
+        description:
+            "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
+        image: require("../assets/onlineCoaching.jpg"),
+        price: 120,
+        selected: false,
+        instructorId: "1",
+    },
+    {
+        id: "5",
         title: "Pistolet de massage",
         type: "Bien-être",
         description:
@@ -33,7 +55,7 @@ const PRODUCTS = [
         instructorId: "1",
     },
     {
-        id: "4",
+        id: "6",
         title: "Protéine Whey (1kg)",
         type: "Nutrition",
         description:
@@ -44,8 +66,8 @@ const PRODUCTS = [
         instructorId: "1",
     },
     {
-        id: "5",
-        title: "Comment prendre du muscle [Débutant]",
+        id: "7",
+        title: "Comment prendre du muscle - [Débutant]",
         type: "Ebook",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -55,8 +77,8 @@ const PRODUCTS = [
         instructorId: "1",
     },
     {
-        id: "6",
-        title: "Comment perdre du poids [Débutant]",
+        id: "8",
+        title: "Comment perdre du poids - [Débutant]",
         type: "Ebook",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -66,8 +88,8 @@ const PRODUCTS = [
         instructorId: "1",
     },
     {
-        id: "7",
-        title: "Comprendre son métabolisme [Débutant]",
+        id: "9",
+        title: "Comprendre son métabolisme - [Débutant]",
         type: "Ebook",
         description:
             "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!",
@@ -77,7 +99,7 @@ const PRODUCTS = [
         instructorId: "1",
     },
     {
-        id: "8",
+        id: "10",
         title: "Pack Elastique de résistance",
         type: "Accessoire",
         description:
@@ -88,7 +110,7 @@ const PRODUCTS = [
         instructorId: "1",
     },
     {
-        id: "9",
+        id: "11",
         title: "TRX",
         type: "Accessoire",
         description:
