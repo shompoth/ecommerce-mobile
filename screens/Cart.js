@@ -7,11 +7,14 @@ import EmptyMsg from "../components/EmptyMsg/EmptyMsg";
 import ProductsInCart from "../components/ProductsInCart/ProductsInCart";
 
 // Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import globalStyles from "../styles/globalStyles";
+// Action
+import { removeCourseCart } from "../redux/actions/actionRemoveCourseCart";
 
 const Cart = () => {
     // Redux
+    const dispatch = useDispatch();
     const cartProducts = useSelector(state => state.cart.cartProducts);
     const total = useSelector(state => state.cart.total);
     return (
@@ -26,7 +29,7 @@ const Cart = () => {
                                 title={item.title}
                                 price={item.price}
                                 type={item.type}
-                                onDelete={() => alert("Effacer le produit")}
+                                onDelete={() => dispatch(removeCourseCart(item.id))}
                             />
                         )}
                     />

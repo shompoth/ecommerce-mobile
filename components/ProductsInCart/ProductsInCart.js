@@ -11,7 +11,6 @@ const ProductsInCart = ({ title, price, type, onDelete }) => {
             {/* <Text numberOfLines={1} style={styles.productTitle}> */}
             <Text style={styles.productTitle}>{title}</Text>
             <Text style={styles.productPrice}>{price.toFixed(2)} €</Text>
-            {/* <Text style={styles.productPrice}>{price} €</Text> */}
             <TouchableOpacity onPress={onDelete}>
                 <MaterialIcons name="delete" size={24} color={globalStyles.primary} />
             </TouchableOpacity>
@@ -33,13 +32,10 @@ const styles = StyleSheet.create({
     },
     productTitle: {
         width: "65%",
-
-        // backgroundColor: "red",
     },
     productPrice: {
         textAlign: "right",
         padding: 9,
         width: "25%",
-        // backgroundColor: "green",
     },
 });
