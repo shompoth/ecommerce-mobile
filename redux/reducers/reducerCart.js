@@ -11,7 +11,12 @@ const reducerCart = (state = initialState, action) => {
         case ADD_TO_CART:
             const product = action.product;
 
-            const newCourse = new PaidProduct(product.id, product.price, product.title);
+            const newCourse = new PaidProduct(
+                product.id,
+                product.price,
+                product.title,
+                product.type,
+            );
 
             return {
                 ...state,

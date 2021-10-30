@@ -5,4 +5,5 @@ export default {
     lightGrey: "#ccc",
     darkGrey: "#333",
     lightOrange: "moccasin",
+    orange: "orange",
 };
