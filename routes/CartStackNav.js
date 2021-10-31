@@ -3,18 +3,17 @@ import { createStackNavigator } from "@react-navigation/stack";
 import globalStyles from "../styles/globalStyles";
 
 // screens
-import Landing from "../screens/Landing";
-import ProductInfos from "../screens/ProductInfos";
+import Cart from "../screens/Cart";
 
 // Header buttons
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderIcon from "../components/CustomHeaderIcon/CustomHeaderIcon";
 
-const ProductsStackNavigator = createStackNavigator();
+const CartStackNavigator = createStackNavigator();
 
-export const ProductsNavigator = () => {
+export const CartNavigator = () => {
     return (
-        <ProductsStackNavigator.Navigator
+        <CartStackNavigator.Navigator
             screenOptions={({ navigation }) => ({
                 headerStyle: {
                     backgroundColor: globalStyles.primary,
@@ -43,14 +42,13 @@ export const ProductsNavigator = () => {
                 ),
             })}
         >
-            <ProductsStackNavigator.Screen name="Accueil" component={Landing} />
-            <ProductsStackNavigator.Screen
-                name="Details"
-                component={ProductInfos}
-                options={({ route }) => ({
-                    title: route.params.title,
-                })}
+            <CartStackNavigator.Screen
+                name="Cart"
+                component={Cart}
+                options={{
+                    title: "Panier",
+                }}
             />
-        </ProductsStackNavigator.Navigator>
+        </CartStackNavigator.Navigator>
     );
 };

@@ -3,18 +3,17 @@ import { createStackNavigator } from "@react-navigation/stack";
 import globalStyles from "../styles/globalStyles";
 
 // screens
-import Landing from "../screens/Landing";
-import ProductInfos from "../screens/ProductInfos";
+import Payments from "../screens/Payments";
 
 // Header buttons
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderIcon from "../components/CustomHeaderIcon/CustomHeaderIcon";
 
-const ProductsStackNavigator = createStackNavigator();
+const PaymentStackNavigator = createStackNavigator();
 
-export const ProductsNavigator = () => {
+export const PaymentNavigator = () => {
     return (
-        <ProductsStackNavigator.Navigator
+        <PaymentStackNavigator.Navigator
             screenOptions={({ navigation }) => ({
                 headerStyle: {
                     backgroundColor: globalStyles.primary,
@@ -43,14 +42,13 @@ export const ProductsNavigator = () => {
                 ),
             })}
         >
-            <ProductsStackNavigator.Screen name="Accueil" component={Landing} />
-            <ProductsStackNavigator.Screen
-                name="Details"
-                component={ProductInfos}
-                options={({ route }) => ({
-                    title: route.params.title,
-                })}
+            <PaymentStackNavigator.Screen
+                name="Payment"
+                component={Payments}
+                options={{
+                    title: "Mes Achats",
+                }}
             />
-        </ProductsStackNavigator.Navigator>
+        </PaymentStackNavigator.Navigator>
     );
 };
