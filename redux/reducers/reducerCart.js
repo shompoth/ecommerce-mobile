@@ -1,5 +1,5 @@
 import PaidProduct from "../../data/PaidProductModel";
-import { ADD_TO_CART, REMOVE_COURSE_CART } from "../constant";
+import { ADD_TO_CART, REMOVE_COURSE_CART, ADD_PAYMENT } from "../constant";
 
 const initialState = {
     cartProducts: [], // (id, price, title)
@@ -38,6 +38,9 @@ const reducerCart = (state = initialState, action) => {
                 cartProducts: newCartProductsArray,
                 total: state.total - productPrice,
             };
+        case ADD_PAYMENT:
+            return initialState;
+
         default:
             return state;
     }

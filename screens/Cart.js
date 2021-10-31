@@ -11,12 +11,20 @@ import { useSelector, useDispatch } from "react-redux";
 import globalStyles from "../styles/globalStyles";
 // Action
 import { removeCourseCart } from "../redux/actions/actionRemoveCourseCart";
+import { addPayment } from "../redux/actions/actionPayment";
 
 const Cart = () => {
     // Redux
     const dispatch = useDispatch();
     const cartProducts = useSelector(state => state.cart.cartProducts);
     const total = useSelector(state => state.cart.total);
+
+    // Fonction
+    const handlePayment = (cartProducts, total) => {
+        dispatch(addPayment(cartProducts, total));
+        alert("Paiement effectué");
+    };
+
     return (
         <View style={styles.cartContainer}>
             {cartProducts.length > 0 ? (
@@ -38,7 +46,9 @@ const Cart = () => {
                             Total:
                             <Text style={styles.totalPrice}> {total.toFixed(2)} €</Text>
                         </Text>
-                        <TouchableOpacity onPress={() => alert("Payer")}>
+                        <TouchableOpacity
+                            onPress={() => handlePayment(cartProducts, total)}
+                        >
                             <View style={styles.btnAddPayament}>
                                 <Text style={styles.btnAddPayamentText}>Payer</Text>
                             </View>
