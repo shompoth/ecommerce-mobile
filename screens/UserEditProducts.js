@@ -1,7 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const UserEditProducts = () => {
+const UserEditProducts = ({ route }) => {
+    // Variable
+    const productId = route.params.productId;
+    console.log(productId);
     return (
         <View>
             <Text>Modifier ou creer une formation</Text>

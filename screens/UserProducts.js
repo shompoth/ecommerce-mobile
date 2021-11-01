@@ -1,14 +1,17 @@
 import React from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import globalStyles from "../styles/globalStyles";
 
 // Composants
 import EmptyMsg from "../components/EmptyMsg/EmptyMsg";
 
+// Icon
+import { AntDesign } from "@expo/vector-icons";
+
 // Redux
 import { useSelector } from "react-redux";
-import globalStyles from "../styles/globalStyles";
 
-const UserProducts = () => {
+const UserProducts = ({ navigation }) => {
     // Redux
     const existingProducts = useSelector(state => state.products.existingProducts);
 
@@ -24,6 +27,32 @@ const UserProducts = () => {
                                 {item.title}
                             </Text>
                             <Text style={styles.productPrice}>{item.price} €</Text>
+                        </View>
+                        <View style={styles.btnIcons}>
+                            <TouchableOpacity
+                                onPress={() =>
+                                    navigation.navigate("Edit", {
+                                        productId: item.id,
+                                    })
+                                }
+                                style={styles.touchableIcon}
+                            >
+                                <AntDesign
+                                    name="edit"
+                                    size={22}
+                                    color={globalStyles.primary}
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => alert("Effacer le produit")}
+                                style={styles.touchableIcon}
+                            >
+                                <AntDesign
+                                    name="delete"
+                                    size={22}
+                                    color={globalStyles.primary}
+                                />
+                            </TouchableOpacity>
                         </View>
                     </View>
                 )}
@@ -55,6 +84,14 @@ const styles = StyleSheet.create({
     },
     productPrice: {
         color: globalStyles.primary,
+    },
+    btnIcons: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    touchableIcon: {
+        paddingHorizontal: 16,
+        paddingTop: 5,
     },
 });
 
