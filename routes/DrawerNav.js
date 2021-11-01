@@ -5,6 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { ProductsNavigator } from "./ProductsStackNav";
 import { CartNavigator } from "./CartStackNav";
 import { PaymentNavigator } from "./PaymentStackNav";
+import { UserNavigator } from "./UserStackNav";
 
 // Icon
 import { MaterialIcons } from "@expo/vector-icons";
@@ -41,6 +42,20 @@ export const DrawerNavigator = () => {
                     title: "Achats",
                     drawerIcon: () => (
                         <MaterialIcons name="credit-card" size={24} color="black" />
+                    ),
+                }}
+            />
+            <Drawer.Screen
+                name="MyProducts"
+                component={UserNavigator}
+                options={{
+                    title: "Mes Produits",
+                    drawerIcon: () => (
+                        <MaterialIcons
+                            name="playlist-add-check"
+                            size={24}
+                            color="black"
+                        />
                     ),
                 }}
             />

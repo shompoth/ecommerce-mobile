@@ -18,7 +18,7 @@ const reducerPayment = (state = initialState, action) => {
 
             return {
                 ...state,
-                payment: state.payments.concat(newPayment),
+                payments: state.payments.concat(newPayment),
             };
         default:
             return state;

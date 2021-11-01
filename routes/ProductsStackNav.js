@@ -43,7 +43,7 @@ export const ProductsNavigator = () => {
                 ),
             })}
         >
-            <ProductsStackNavigator.Screen name="Accueil" component={Landing} />
+            <ProductsStackNavigator.Screen name="Catalogue" component={Landing} />
             <ProductsStackNavigator.Screen
                 name="Details"
                 component={ProductInfos}
