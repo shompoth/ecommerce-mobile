@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const UserCourses = () => {
+const UserEditProducts = () => {
     return (
         <View>
-            <Text>Mes cours</Text>
+            <Text>Modifier ou creer une formation</Text>
         </View>
     );
 };
 
-export default UserCourses;
+export default UserEditProducts;
 
 const styles = StyleSheet.create({});

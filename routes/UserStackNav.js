@@ -3,8 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import globalStyles from "../styles/globalStyles";
 
 // Screen
-import UserCourses from "../screens/UserCourses";
-import UserEditCourses from "../screens/UserEditCourses";
+import UserProducts from "../screens/UserProducts";
+import UserEditProducts from "../screens/UserEditProducts";
 
 // Header buttons
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -27,9 +27,9 @@ export const UserNavigator = () => {
         >
             <UserStackNavigator.Screen
                 name="Courses"
-                component={UserCourses}
+                component={UserProducts}
                 options={({ navigation }) => ({
-                    title: "Mes cours",
+                    title: "Mes Produits",
                     headerRight: () => (
                         <HeaderButtons HeaderButtonComponent={CustomHeaderIcon}>
                             <Item
@@ -56,7 +56,7 @@ export const UserNavigator = () => {
             />
             <UserStackNavigator.Screen
                 name="Edit"
-                component={UserEditCourses}
+                component={UserEditProducts}
                 options={({ route }) => ({
                     title: route.params.title ? route.params.title : "Éditer le produit",
                 })}
