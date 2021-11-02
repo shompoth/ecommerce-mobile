@@ -10,7 +10,7 @@ import ProductsInCart from "../components/ProductsInCart/ProductsInCart";
 import { useSelector, useDispatch } from "react-redux";
 import globalStyles from "../styles/globalStyles";
 // Action
-import { removeCourseCart } from "../redux/actions/actionRemoveCourseCart";
+import { removeProductCart } from "../redux/actions/actionRemoveProductCart";
 import { addPayment } from "../redux/actions/actionPayment";
 
 const Cart = () => {
@@ -37,7 +37,7 @@ const Cart = () => {
                                 title={item.title}
                                 price={item.price}
                                 type={item.type}
-                                onDelete={() => dispatch(removeCourseCart(item.id))}
+                                onDelete={() => dispatch(removeProductCart(item.id))}
                             />
                         )}
                     />

@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import globalStyles from "../styles/globalStyles";
 
 // Composants
@@ -9,16 +9,29 @@ import EmptyMsg from "../components/EmptyMsg/EmptyMsg";
 import { AntDesign } from "@expo/vector-icons";
 
 // Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+// Redux Action
+import { deleteProduct } from "../redux/actions/actionDeleteProduct";
 
 const UserProducts = ({ navigation }) => {
     // Redux
-    const existingProducts = useSelector(state => state.products.existingProducts);
+    const loggedInMemberProducts = useSelector(
+        state => state.products.loggedInMemberProducts,
+    );
+    const dispatch = useDispatch();
 
-    if (existingProducts.length > 0) {
+    // Fonction
+    const handleDeleteProduct = id => {
+        Alert.alert("Attention", "Voulez-vous supprimer ce cours ? ", [
+            { text: "OUI", onPress: () => dispatch(deleteProduct(id)) },
+            { text: "NON" },
+        ]);
+    };
+
+    if (loggedInMemberProducts.length > 0) {
         return (
             <FlatList
-                data={existingProducts}
+                data={loggedInMemberProducts}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
                     <View style={styles.productContainer}>
@@ -44,7 +57,7 @@ const UserProducts = ({ navigation }) => {
                                 />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => alert("Effacer le produit")}
+                                onPress={() => handleDeleteProduct(item.id)}
                                 style={styles.touchableIcon}
                             >
                                 <AntDesign
