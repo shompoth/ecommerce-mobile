@@ -7,7 +7,7 @@ import EmptyMsg from "../components/EmptyMsg/EmptyMsg";
 import ProductsInCart from "../components/ProductsInCart/ProductsInCart";
 
 // Redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, useEffect } from "react-redux";
 import globalStyles from "../styles/globalStyles";
 // Action
 import { removeProductCart } from "../redux/actions/actionRemoveProductCart";
