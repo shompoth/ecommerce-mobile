@@ -9,16 +9,24 @@ import {
 } from "react-native";
 import globalStyles from "../styles/globalStyles";
 
-const UserEditProducts = ({ route }) => {
-    // State
-    const [title, setTitle] = useState("");
-    const [type, setType] = useState("");
-    const [image, setImage] = useState("");
-    const [price, setPrice] = useState("");
-    const [desc, setDesc] = useState("");
+// Redux
+import { useSelector } from "react-redux";
 
+const UserEditProducts = ({ route }) => {
     // Variable
     const productId = route.params.productId;
+
+    // Redux
+    const myProduct = useSelector(state =>
+        state.products.loggedInMemberProducts.find(product => product.id === productId),
+    );
+
+    // State
+    const [title, setTitle] = useState(myProduct ? myProduct.title : "");
+    const [type, setType] = useState(myProduct ? myProduct.type : "");
+    const [image, setImage] = useState("");
+    const [price, setPrice] = useState(myProduct ? myProduct.price : "");
+    const [desc, setDesc] = useState(myProduct ? myProduct.description : "");
 
     return (
         <ScrollView>
@@ -41,19 +49,21 @@ const UserEditProducts = ({ route }) => {
                     />
                 </View>
 
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Image (URL)</Text>
-                    <TextInput
-                        value={image}
-                        onChangeText={text => setImage(text)}
-                        style={styles.input}
-                    />
-                </View>
+                {myProduct ? null : (
+                    <View style={styles.formControl}>
+                        <Text style={styles.label}>Image (URL)</Text>
+                        <TextInput
+                            value={image}
+                            onChangeText={text => setImage(text)}
+                            style={styles.input}
+                        />
+                    </View>
+                )}
 
                 <View style={styles.formControl}>
-                    <Text style={styles.label}>Prix</Text>
+                    <Text style={styles.label}>Prix €</Text>
                     <TextInput
-                        value={price}
+                        value={price.toString()}
                         onChangeText={text => setPrice(text)}
                         style={styles.input}
                     />
