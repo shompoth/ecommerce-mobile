@@ -10,7 +10,7 @@ const ProductsInCart = ({ title, price, type, onDelete }) => {
         <View style={styles.productsContainer}>
             {/* <Text numberOfLines={1} style={styles.productTitle}> */}
             <Text style={styles.productTitle}>{title}</Text>
-            <Text style={styles.productPrice}>{price.toFixed(2)} €</Text>
+            <Text style={styles.productPrice}>{Number(price).toFixed(2)} €</Text>
             <TouchableOpacity onPress={onDelete}>
                 <MaterialIcons name="delete" size={24} color={globalStyles.primary} />
             </TouchableOpacity>

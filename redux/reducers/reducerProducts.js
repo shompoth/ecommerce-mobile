@@ -1,5 +1,16 @@
+// Data
 import PRODUCTS from "../../data/testData";
-import { ADD_TO_CART, DELETE_PRODUCT, REMOVE_PRODUCT_CART } from "../constant";
+
+// Class
+import ProductModel from "../../data/ProductModel";
+
+// Constant
+import {
+    ADD_TO_CART,
+    DELETE_PRODUCT,
+    REMOVE_PRODUCT_CART,
+    EDIT_PRODUCT,
+} from "../constant";
 
 const initialState = {
     existingProducts: PRODUCTS,
@@ -45,6 +56,38 @@ const reducerProducts = (state = initialState, action) => {
                     product => product.id !== action.productId,
                 ),
             };
+
+        case EDIT_PRODUCT:
+            const productId = action.productId;
+            const indexProductToUpdate = state.loggedInMemberProducts.findIndex(
+                product => product.id === productId,
+            );
+            const updateProduct = new ProductModel(
+                productId,
+                action.updatedProduct.title,
+                action.updatedProduct.type,
+                action.updatedProduct.desc,
+                state.loggedInMemberProducts[indexProductToUpdate].image,
+                action.updatedProduct.price,
+                state.loggedInMemberProducts[indexProductToUpdate].selected,
+                state.loggedInMemberProducts[indexProductToUpdate].instructorId,
+            );
+
+            const newLoggedInMemberProducts = [...state.loggedInMemberProducts];
+            newLoggedInMemberProducts[indexProductToUpdate] = updateProduct;
+
+            const indexExistingProducts = state.existingProducts.findIndex(
+                product => product.id === productId,
+            );
+            const newExistingProducts = [...state.existingProducts];
+            newExistingProducts[indexExistingProducts] = updateProduct;
+
+            return {
+                ...state,
+                existingProducts: newExistingProducts,
+                loggedInMemberProducts: newLoggedInMemberProducts,
+            };
+
         default:
             return state;
     }

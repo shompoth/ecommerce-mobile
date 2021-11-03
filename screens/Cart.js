@@ -43,8 +43,10 @@ const Cart = () => {
                     />
                     <View style={styles.totalContainer}>
                         <Text style={styles.totalText}>
-                            Total:
-                            <Text style={styles.totalPrice}> {total.toFixed(2)} €</Text>
+                            Total:{" "}
+                            <Text style={styles.totalPrice}>
+                                {Number(total).toFixed(2)} €
+                            </Text>
                         </Text>
                         <TouchableOpacity
                             onPress={() => handlePayment(cartProducts, total)}

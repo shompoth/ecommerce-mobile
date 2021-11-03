@@ -2,3 +2,4 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_PRODUCT_CART = "REMOVE_PRODUCT_CART";
 export const ADD_PAYMENT = "ADD_PAYAMENT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const EDIT_PRODUCT = "EDIT_PRODUCT";

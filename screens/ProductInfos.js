@@ -46,19 +46,13 @@ const ProductInfos = ({ navigation, route }) => {
                     <Text style={styles.courseDescription}>
                         {selectedCourse.description}
                     </Text>
-                    <Text style={styles.courseDescription}>
-                        {selectedCourse.description}
-                    </Text>
-                    <Text style={styles.courseDescription}>
-                        {selectedCourse.description}
-                    </Text>
                 </View>
             </ScrollView>
             <View style={styles.footerContainer}>
                 <View style={styles.footerTop}>
                     <View style={styles.coursePriceWrapper}>
                         <Text style={styles.coursePrice}>
-                            {selectedCourse.price.toFixed(2)} €
+                            {Number(selectedCourse.price).toFixed(2)} €
                         </Text>
                     </View>
                 </View>

@@ -10,9 +10,12 @@ import {
 import globalStyles from "../styles/globalStyles";
 
 // Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-const UserEditProducts = ({ route }) => {
+// Action
+import { editProduct } from "../redux/actions/actionEditProduct";
+
+const UserEditProducts = ({ route, navigation }) => {
     // Variable
     const productId = route.params.productId;
 
@@ -20,6 +23,7 @@ const UserEditProducts = ({ route }) => {
     const myProduct = useSelector(state =>
         state.products.loggedInMemberProducts.find(product => product.id === productId),
     );
+    const dispatch = useDispatch();
 
     // State
     const [title, setTitle] = useState(myProduct ? myProduct.title : "");
@@ -27,6 +31,16 @@ const UserEditProducts = ({ route }) => {
     const [image, setImage] = useState("");
     const [price, setPrice] = useState(myProduct ? myProduct.price : "");
     const [desc, setDesc] = useState(myProduct ? myProduct.description : "");
+
+    // Fonction
+    const handleSubmit = () => {
+        if (productId) {
+            dispatch(editProduct(productId, title, type, price, desc));
+            navigation.goBack();
+        } else {
+            // Create mode
+        }
+    };
 
     return (
         <ScrollView>
@@ -63,6 +77,7 @@ const UserEditProducts = ({ route }) => {
                 <View style={styles.formControl}>
                     <Text style={styles.label}>Prix €</Text>
                     <TextInput
+                        keyboardType="numeric"
                         value={price.toString()}
                         onChangeText={text => setPrice(text)}
                         style={styles.input}
@@ -78,7 +93,7 @@ const UserEditProducts = ({ route }) => {
                     />
                 </View>
 
-                <TouchableOpacity onPress={() => alert("validé")}>
+                <TouchableOpacity onPress={handleSubmit}>
                     <View style={styles.btnContainer}>
                         <Text style={styles.btnText}>Valider</Text>
                     </View>
