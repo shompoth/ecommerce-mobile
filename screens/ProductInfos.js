@@ -52,7 +52,7 @@ const ProductInfos = ({ navigation, route }) => {
                 <View style={styles.footerTop}>
                     <View style={styles.coursePriceWrapper}>
                         <Text style={styles.coursePrice}>
-                            {Number(selectedCourse.price).toFixed(2)} €
+                            {selectedCourse.price.toFixed(2)} €
                         </Text>
                     </View>
                 </View>

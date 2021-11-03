@@ -10,6 +10,7 @@ import {
     DELETE_PRODUCT,
     REMOVE_PRODUCT_CART,
     EDIT_PRODUCT,
+    CREATE_PRODUCT,
 } from "../constant";
 
 const initialState = {
@@ -86,6 +87,26 @@ const reducerProducts = (state = initialState, action) => {
                 ...state,
                 existingProducts: newExistingProducts,
                 loggedInMemberProducts: newLoggedInMemberProducts,
+            };
+
+        case CREATE_PRODUCT:
+            //id, title, type, description, image, price, selected, instructorId
+            const newProduct = new ProductModel(
+                Date.now().toString(),
+                action.newProduct.title,
+                action.newProduct.type,
+                action.newProduct.description,
+                // action.newProduct.image,
+                "",
+                action.newProduct.price,
+                false,
+                "1",
+            );
+
+            return {
+                ...state,
+                existingProducts: state.existingProducts.concat(newProduct),
+                loggedInMemberProducts: state.loggedInMemberProducts.concat(newProduct),
             };
 
         default:

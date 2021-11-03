@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 // Action
 import { editProduct } from "../redux/actions/actionEditProduct";
+import { createProduct } from "../redux/actions/actionCreateProduct";
 
 const UserEditProducts = ({ route, navigation }) => {
     // Variable
@@ -35,10 +36,12 @@ const UserEditProducts = ({ route, navigation }) => {
     // Fonction
     const handleSubmit = () => {
         if (productId) {
-            dispatch(editProduct(productId, title, type, price, desc));
+            dispatch(editProduct(productId, title, type, +price, desc));
             navigation.goBack();
         } else {
-            // Create mode
+            // dispatch(createProduct(title, type, image price, desc));
+            dispatch(createProduct(title, type, "", +price, desc));
+            navigation.goBack();
         }
     };
 
