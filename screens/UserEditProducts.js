@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import {
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import React, { useReducer } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 import globalStyles from "../styles/globalStyles";
+
+// Composants
+import Input from "../components/Input/Input";
+import BtnForm from "../components/BtnForm/BtnForm";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -15,6 +12,9 @@ import { useSelector, useDispatch } from "react-redux";
 // Action
 import { editProduct } from "../redux/actions/actionEditProduct";
 import { createProduct } from "../redux/actions/actionCreateProduct";
+
+// Reducer
+import { formReducer } from "../formData/formReducer";
 
 const UserEditProducts = ({ route, navigation }) => {
     // Variable
@@ -26,81 +26,104 @@ const UserEditProducts = ({ route, navigation }) => {
     );
     const dispatch = useDispatch();
 
-    // State
-    const [title, setTitle] = useState(myProduct ? myProduct.title : "");
-    const [type, setType] = useState(myProduct ? myProduct.type : "");
-    const [image, setImage] = useState("");
-    const [price, setPrice] = useState(myProduct ? myProduct.price : "");
-    const [desc, setDesc] = useState(myProduct ? myProduct.description : "");
+    formInitialState = {
+        inputValues: {
+            title: myProduct ? myProduct.title : "",
+            type: myProduct ? myProduct.type : "",
+            image: "",
+            price: myProduct ? myProduct.price : "",
+            desc: myProduct ? myProduct.description : "",
+        },
+        isInputValid: {
+            title: myProduct ? true : false,
+            type: myProduct ? true : false,
+            image: "",
+            price: myProduct ? true : false,
+            desc: myProduct ? true : false,
+        },
+        isValidForm: myProduct ? true : false,
+    };
+
+    // Reducer
+    const [formState, formActionsDispatch] = useReducer(formReducer, formInitialState);
 
     // Fonction
     const handleSubmit = () => {
+        const { title, type, image, price, desc } = formState.inputValues;
+
         if (productId) {
             dispatch(editProduct(productId, title, type, +price, desc));
             navigation.goBack();
         } else {
             // dispatch(createProduct(title, type, image price, desc));
-            dispatch(createProduct(title, type, "", +price, desc));
+            const imageNotAvaible = require("../assets/Image_not_available.png");
+            dispatch(createProduct(title, type, imageNotAvaible, +price, desc));
             navigation.goBack();
         }
+    };
+
+    const inputHandler = (inputName, text) => {
+        let isValidInput = false;
+        if (text.length > 0) {
+            isValidInput = true;
+        }
+
+        // dispatch action
+        formActionsDispatch({
+            type: "INPUT_VALIDATION",
+            value: text,
+            isValid: isValidInput,
+            input: inputName,
+        });
     };
 
     return (
         <ScrollView>
             <View style={styles.formContainer}>
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Titre</Text>
-                    <TextInput
-                        value={title}
-                        onChangeText={text => setTitle(text)}
-                        style={styles.input}
-                    />
-                </View>
+                <Input
+                    label="Titre"
+                    value={formState.inputValues.title}
+                    onKeyStroke={text => inputHandler("title", text)}
+                />
 
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Type de produit</Text>
-                    <TextInput
-                        value={type}
-                        onChangeText={text => setType(text)}
-                        style={styles.input}
-                    />
-                </View>
+                <Input
+                    label="Type de produit"
+                    value={formState.inputValues.type}
+                    onKeyStroke={text => inputHandler("type", text)}
+                />
 
                 {myProduct ? null : (
-                    <View style={styles.formControl}>
-                        <Text style={styles.label}>Image (URL)</Text>
-                        <TextInput
-                            value={image}
-                            onChangeText={text => setImage(text)}
-                            style={styles.input}
-                        />
-                    </View>
+                    <Input
+                        label="Image (URL)"
+                        value={formState.inputValues.image}
+                        onKeyStroke={text => inputHandler("image", text)}
+                    />
                 )}
 
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Prix €</Text>
-                    <TextInput
-                        keyboardType="numeric"
-                        value={price.toString()}
-                        onChangeText={text => setPrice(text)}
-                        style={styles.input}
-                    />
-                </View>
+                <Input
+                    label="Prix €"
+                    value={formState.inputValues.price.toString()}
+                    onKeyStroke={text => inputHandler("price", text)}
+                    keyboardType="decimal-pad"
+                />
 
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Informations</Text>
-                    <TextInput
-                        value={desc}
-                        onChangeText={text => setDesc(text)}
-                        style={styles.input}
-                    />
-                </View>
+                <Input
+                    label="Informations"
+                    value={formState.inputValues.desc}
+                    onKeyStroke={text => inputHandler("desc", text)}
+                    multiline
+                    numberOfLines={5}
+                />
 
-                <TouchableOpacity onPress={handleSubmit}>
-                    <View style={styles.btnContainer}>
-                        <Text style={styles.btnText}>Valider</Text>
-                    </View>
-                </TouchableOpacity>
+                <BtnForm
+                    btnText={
+                        formState.isValidForm
+                            ? "Valider"
+                            : "Veuillez remplir tous les champs"
+                    }
+                    activate={formState.isValidForm ? false : true}
+                    handleSubmit={handleSubmit}
+                />
             </View>
         </ScrollView>
     );
@@ -114,31 +137,5 @@ const styles = StyleSheet.create({
         borderRadius: 9,
         padding: 20,
         margin: 20,
-    },
-    formControl: {
-        width: "100%",
-    },
-    label: {
-        marginVertical: 15,
-        color: globalStyles.primary,
-        fontWeight: "bold",
-    },
-    input: {
-        paddingHorizontal: 9,
-        paddingVertical: 9,
-        borderColor: globalStyles.primary,
-        borderWidth: 0.5,
-        borderRadius: 6,
-    },
-    btnContainer: {
-        borderRadius: 6,
-        paddingVertical: 9,
-        paddingHorizontal: 25,
-        backgroundColor: globalStyles.orange,
-        marginTop: 20,
-    },
-    btnText: {
-        fontSize: 19,
-        textAlign: "center",
     },
 });

@@ -97,7 +97,7 @@ const reducerProducts = (state = initialState, action) => {
                 action.newProduct.type,
                 action.newProduct.description,
                 // action.newProduct.image,
-                "",
+                action.newProduct.image,
                 action.newProduct.price,
                 false,
                 "1",
